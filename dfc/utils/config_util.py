@@ -24,6 +24,7 @@ def load_config(app_root, config_file, db_root=None):
     else:
         db_root = os.path.join(app_root, "db")
     config = config.replace("@@DB_ROOT@@", db_root)
+    logger.info("!!!!!!!!!!!!!! CONFIG", config)
     exec(config, globals())  # Config object will be imported
     return Config
 
