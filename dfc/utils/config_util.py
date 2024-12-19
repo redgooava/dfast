@@ -15,7 +15,7 @@ def load_config(app_root, config_file, db_root=None):
 
     config = open(config_file).read()
     config = config.replace("@@APP_ROOT@@", app_root)
-    logger.info("&&&&&&&&&&&&&& CONFIG", config)
+    logger.info("&&&&&&&&&&&&&& CONFIG %s", config)
     db_root_env = os.getenv('DFAST_DB_ROOT')
     if db_root:
         logger.info("DB_ROOT is specified by a command-line option --dbroot %s", db_root)
@@ -25,7 +25,7 @@ def load_config(app_root, config_file, db_root=None):
     else:
         db_root = os.path.join(app_root, "db")
     config = config.replace("@@DB_ROOT@@", db_root)
-    logger.info("!!!!!!!!!!!!!! CONFIG", config)
+    logger.info("!!!!!!!!!!!!!! CONFIG %s", config)
     exec(config, globals())  # Config object will be imported
     return Config
 
